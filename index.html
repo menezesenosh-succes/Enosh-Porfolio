@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enosh Godwin Menezes — B2B Digital Marketing &amp; Marketing Operations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #FFFFFF;
+    --sky: #EEF4FF;
+    --sky-2: #E3ECFC;
+    --navy: #0B1F3A;
+    --navy-soft: #16305A;
+    --blue: #2454FF;
+    --blue-deep: #143BCC;
+    --slate: #5C6B85;
+    --line: #D8E3F6;
+    --good: #1F9D6C;
+    --shadow: 0 20px 50px -25px rgba(11,31,58,0.35);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--navy);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk',sans-serif;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .mono{
+    font-family:'IBM Plex Mono',monospace;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--blue);color:#fff;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- Layout shells ---------- */
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  section{position:relative;}
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,255,255,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1080px;
+    margin:0 auto;
+    padding:16px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .nav-mark{
+    font-weight:700;
+    font-size:15px;
+    letter-spacing:0.02em;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .nav-mark .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--blue);
+    box-shadow:0 0 0 4px var(--sky-2);
+  }
+  .nav-links{display:flex;gap:28px;font-size:14px;color:var(--slate);font-weight:500;}
+  .nav-links a{transition:color .2s ease;}
+  .nav-links a:hover{color:var(--blue);}
+  .nav-cta{
+    font-size:13px;font-weight:600;
+    background:var(--navy);color:#fff;
+    padding:9px 18px;border-radius:100px;
+    transition:background .2s ease, transform .2s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--blue);transform:translateY(-1px);}
+  @media (max-width:720px){
+    .nav-links{display:none;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:96px 0 72px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-graph{
+    position:absolute;
+    right:-8%;
+    top:0;
+    width:64%;
+    height:100%;
+    opacity:0.9;
+    pointer-events:none;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--blue-deep);
+    background:var(--sky);
+    border:1px solid var(--sky-2);
+    padding:6px 14px;
+    border-radius:100px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+  }
+  .hero h1{
+    font-size:clamp(38px,5.4vw,64px);
+    line-height:1.04;
+    margin-top:22px;
+    max-width:760px;
+  }
+  .hero h1 span{color:var(--blue);}
+  .hero-sub{
+    margin-top:22px;
+    font-size:17px;
+    line-height:1.65;
+    color:var(--slate);
+    max-width:600px;
+  }
+  .hero-actions{
+    margin-top:34px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-size:14px;
+    font-weight:600;
+    padding:13px 24px;
+    border-radius:10px;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-primary{
+    background:var(--blue);
+    color:#fff;
+    box-shadow:0 12px 24px -10px rgba(36,84,255,0.55);
+  }
+  .btn-primary:hover{background:var(--blue-deep); transform:translateY(-2px);}
+  .btn-ghost{
+    background:#fff;
+    color:var(--navy);
+    border:1.5px solid var(--line);
+  }
+  .btn-ghost:hover{border-color:var(--blue); color:var(--blue); transform:translateY(-2px);}
+
+  /* Stat strip */
+  .stat-strip{
+    margin-top:64px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+    max-width:720px;
+    box-shadow:var(--shadow);
+  }
+  .stat-tile{
+    background:#fff;
+    padding:26px 24px;
+  }
+  .stat-num{
+    font-size:30px;
+    font-weight:600;
+    color:var(--navy);
+    display:flex;
+    align-items:baseline;
+    gap:4px;
+  }
+  .stat-num .arrow{
+    color:var(--good);
+    font-size:16px;
+  }
+  .stat-num.down .arrow{color:var(--blue);}
+  .stat-label{
+    margin-top:6px;
+    font-size:12.5px;
+    color:var(--slate);
+    font-weight:500;
+  }
+  @media (max-width:640px){
+    .stat-strip{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Section headings ---------- */
+  .section-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:24px;
+    margin-bottom:44px;
+    flex-wrap:wrap;
+  }
+  .section-tag{
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--blue);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:10px;
+    display:block;
+  }
+  .section-title{
+    font-size:clamp(26px,3.4vw,36px);
+  }
+  .section-note{
+    font-size:14px;
+    color:var(--slate);
+    max-width:320px;
+    line-height:1.6;
+  }
+
+  section.pad{padding:88px 0;}
+  .divider{
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--line) 15%, var(--line) 85%, transparent);
+  }
+
+  /* ---------- Skills ---------- */
+  .skill-groups{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
+  }
+  @media (max-width:720px){ .skill-groups{grid-template-columns:1fr;} }
+  .skill-card{
+    background:var(--sky);
+    border:1px solid var(--sky-2);
+    border-radius:16px;
+    padding:26px 26px 22px;
+  }
+  .skill-card h3{
+    font-size:14px;
+    font-weight:600;
+    color:var(--navy-soft);
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .skill-card h3::before{
+    content:'';
+    width:6px;height:6px;
+    background:var(--blue);
+    border-radius:2px;
+    display:inline-block;
+  }
+  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .pill{
+    font-size:13px;
+    font-weight:500;
+    background:#fff;
+    border:1px solid var(--line);
+    color:var(--navy);
+    padding:7px 13px;
+    border-radius:8px;
+  }
+
+  /* ---------- Experience timeline ---------- */
+  .timeline{
+    position:relative;
+    padding-left:28px;
+  }
+  .timeline::before{
+    content:'';
+    position:absolute;
+    left:4px;
+    top:6px;
+    bottom:6px;
+    width:2px;
+    background:var(--line);
+  }
+  .tl-item{
+    position:relative;
+    padding-bottom:52px;
+  }
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-dot{
+    position:absolute;
+    left:-28px;
+    top:4px;
+    width:10px;height:10px;
+    border-radius:50%;
+    background:var(--blue);
+    box-shadow:0 0 0 5px var(--sky);
+  }
+  .tl-item.current .tl-dot{
+    background:var(--good);
+    box-shadow:0 0 0 5px #E4F5EC;
+  }
+  .tl-date{
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--blue-deep);
+    font-family:'IBM Plex Mono',monospace;
+    letter-spacing:0.01em;
+  }
+  .tl-role{
+    font-size:20px;
+    font-weight:600;
+    margin-top:6px;
+    font-family:'Space Grotesk',sans-serif;
+  }
+  .tl-co{
+    font-size:14px;
+    color:var(--slate);
+    margin-top:2px;
+  }
+  .tl-bullets{
+    margin:16px 0 0;
+    padding:0;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .tl-bullets li{
+    font-size:14.5px;
+    line-height:1.6;
+    color:#333f56;
+    padding-left:18px;
+    position:relative;
+  }
+  .tl-bullets li::before{
+    content:'';
+    position:absolute;
+    left:0;top:9px;
+    width:5px;height:5px;
+    background:var(--blue);
+    border-radius:1px;
+    transform:rotate(45deg);
+  }
+  .tl-bullets b{color:var(--navy);font-weight:600;}
+
+  /* ---------- Projects ---------- */
+  .project-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  @media (max-width:860px){ .project-grid{grid-template-columns:1fr;} }
+  .project-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:28px 24px;
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .project-card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow);
+    border-color:var(--sky-2);
+  }
+  .project-client{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--slate);
+  }
+  .project-title{
+    font-size:17px;
+    font-weight:600;
+    margin-top:8px;
+    font-family:'Space Grotesk',sans-serif;
+    min-height:44px;
+  }
+  .project-metric{
+    margin-top:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--sky);
+    border-radius:12px;
+    padding:14px 16px;
+  }
+  .project-metric .from{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--slate);
+    text-decoration:line-through;
+    text-decoration-color:#B9C6E0;
+  }
+  .project-metric .to{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:17px;
+    font-weight:600;
+    color:var(--blue-deep);
+  }
+  .project-pct{
+    margin-left:auto;
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--good);
+    background:#E4F5EC;
+    padding:3px 9px;
+    border-radius:100px;
+  }
+  .project-desc{
+    margin-top:16px;
+    font-size:13.5px;
+    line-height:1.6;
+    color:var(--slate);
+  }
+
+  /* ---------- Certifications ---------- */
+  .cert-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .cert-badge{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#fff;
+    border:1px solid var(--line);
+    padding:12px 16px;
+    border-radius:12px;
+    font-size:13.5px;
+    font-weight:500;
+    color:var(--navy);
+  }
+  .cert-badge svg{flex-shrink:0;}
+
+  /* ---------- Footer / Contact ---------- */
+  .footer{
+    background:var(--navy);
+    color:#fff;
+    padding:80px 0 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .footer-graph{
+    position:absolute;
+    left:-6%;
+    bottom:-10%;
+    width:60%;
+    opacity:0.18;
+    pointer-events:none;
+  }
+  .footer-inner{position:relative; z-index:2;}
+  .footer h2{
+    font-size:clamp(28px,4vw,42px);
+    max-width:600px;
+    line-height:1.15;
+  }
+  .footer h2 span{color:#7DA2FF;}
+  .footer-sub{
+    margin-top:16px;
+    color:#A9B6D6;
+    font-size:15px;
+    max-width:480px;
+    line-height:1.6;
+  }
+  .footer-actions{
+    margin-top:32px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn-light{
+    background:#fff;
+    color:var(--navy);
+  }
+  .btn-light:hover{background:#7DA2FF; color:#fff; transform:translateY(-2px);}
+  .btn-outline-light{
+    border:1.5px solid rgba(255,255,255,0.28);
+    color:#fff;
+  }
+  .btn-outline-light:hover{border-color:#7DA2FF; color:#7DA2FF; transform:translateY(-2px);}
+
+  .contact-grid{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    padding-top:32px;
+    border-top:1px solid rgba(255,255,255,0.14);
+  }
+  @media (max-width:800px){ .contact-grid{grid-template-columns:repeat(2,1fr);} }
+  .contact-label{
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:#7C89AC;
+    font-weight:600;
+  }
+  .contact-val{
+    margin-top:8px;
+    font-size:14.5px;
+    font-weight:500;
+    color:#EDF1FA;
+  }
+  .contact-val a:hover{color:#7DA2FF;}
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-mark"><span class="dot"></span>Enosh Menezes</div>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#certs">Certifications</a>
+    </div>
+    <a class="nav-cta" href="mailto:menezesenosh@gmail.com">Get in touch</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <svg class="hero-graph" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="0,420 60,400 110,430 170,340 220,360 280,260 330,290 390,170 440,190 500,90"
+      stroke="#2454FF" stroke-width="2" stroke-opacity="0.18" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="0,470 60,455 110,460 170,410 220,420 280,350 330,365 390,270 440,280 500,190"
+      stroke="#2454FF" stroke-width="2" stroke-opacity="0.10" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="500" cy="90" r="5" fill="#2454FF" fill-opacity="0.35"/>
+  </svg>
+
+  <div class="wrap">
+    <span class="eyebrow">B2B Digital Marketing &amp; Marketing Operations</span>
+    <h1>I turn ad spend into<br>qualified <span>pipeline.</span></h1>
+    <p class="hero-sub">3+ years driving demand generation, paid media, and lifecycle campaigns for a Zoom Platinum Partner in the SaaS &amp; contact-center space — across India, APAC, and Gulf markets. Hands-on with Google Ads, Meta Ads, LinkedIn Ads, GA4, Zoho CRM, and lifecycle automation.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="mailto:menezesenosh@gmail.com">Email me →</a>
+      <a class="btn btn-ghost" href="https://linkedin.com/in/enoshgodwin" target="_blank" rel="noopener">LinkedIn profile</a>
+      <a class="btn btn-ghost" href="tel:+917848980078">+91 78489 80078</a>
+    </div>
+
+    <div class="stat-strip reveal">
+      <div class="stat-tile">
+        <div class="stat-num mono">30–40<span class="arrow">↑</span>%</div>
+        <div class="stat-label">Qualified pipeline growth</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num mono down">15–20<span class="arrow">↓</span>%</div>
+        <div class="stat-label">Cost per lead reduction</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num mono">18–25<span class="arrow">↑</span>%</div>
+        <div class="stat-label">Landing page conversion lift</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<section class="pad" id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="section-tag">Core Skills</span>
+        <h2 class="section-title">Where strategy meets execution</h2>
+      </div>
+      <p class="section-note">Full-funnel toolkit — from paid acquisition to CRM administration to the finance instincts that keep budgets honest.</p>
+    </div>
+
+    <div class="skill-groups">
+      <div class="skill-card reveal">
+        <h3>Paid Media &amp; Acquisition</h3>
+        <div class="pill-row">
+          <span class="pill">Google Ads</span>
+          <span class="pill">Meta Ads</span>
+          <span class="pill">LinkedIn Ads</span>
+          <span class="pill">SEO / SEM Fundamentals</span>
+          <span class="pill">Demand Generation</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Analytics, CRM &amp; Tracking</h3>
+        <div class="pill-row">
+          <span class="pill">GA4</span>
+          <span class="pill">Google Tag Manager</span>
+          <span class="pill">UTM &amp; Attribution</span>
+          <span class="pill">Zoho CRM</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Content, Lifecycle &amp; Web</h3>
+        <div class="pill-row">
+          <span class="pill">Apollo.io</span>
+          <span class="pill">Mailchimp</span>
+          <span class="pill">MailerLite</span>
+          <span class="pill">Landing Pages (HTML/CSS)</span>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <h3>Operations &amp; Business</h3>
+        <div class="pill-row">
+          <span class="pill">Vendor Management</span>
+          <span class="pill">Budget Planning</span>
+          <span class="pill">Financial Accounting</span>
+          <span class="pill">Stakeholder Management</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<section class="pad" id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="section-tag">Experience</span>
+        <h2 class="section-title">Career trajectory</h2>
+      </div>
+      <p class="section-note">From finance and logistics operations into full-funnel B2B marketing — a path built on process discipline as much as creative instinct.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item current reveal">
+        <span class="tl-dot"></span>
+        <div class="tl-date">JAN 2024 — PRESENT</div>
+        <div class="tl-role">Digital Marketing &amp; Operations Executive</div>
+        <div class="tl-co">Sysgrate Technologies Pvt Ltd · Bengaluru, India</div>
+        <ul class="tl-bullets">
+          <li>Optimized paid campaigns across Google, Meta &amp; LinkedIn Ads, growing qualified B2B pipeline <b>30–40%</b> while cutting cost per lead <b>15–20%</b>.</li>
+          <li>Built conversion-focused landing pages in HTML/CSS, lifting conversion rates <b>18–25%</b> through UTM tracking and analytics-driven iteration.</li>
+          <li>Ran lifecycle email campaigns via Apollo.io, Mailchimp &amp; MailerLite — <b>25–35%</b> open rates, <b>4–8%</b> CTR, deliverability up <b>15%</b>.</li>
+          <li>Administered Zoho CRM and negotiated vendor contracts, improving process efficiency <b>20%</b> and delivering <b>10–15%</b> cost savings.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <div class="tl-date">FEB 2022 — DEC 2023</div>
+        <div class="tl-role">Logistics &amp; Customer Operations Executive</div>
+        <div class="tl-co">FreeUp India · Bengaluru, India</div>
+        <ul class="tl-bullets">
+          <li>Coordinated fulfilment with Delhivery, Ekart &amp; Shiprocket, improving efficiency <b>15–20%</b>.</li>
+          <li>Resolved partner escalations proactively, lifting customer satisfaction.</li>
+          <li>Directed inventory audits and replenishment planning to prevent stockouts.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal">
+        <span class="tl-dot"></span>
+        <div class="tl-date">FINANCE &amp; ACCOUNTS EXECUTIVE</div>
+        <div class="tl-role">Finance &amp; Accounts Executive</div>
+        <div class="tl-co">Oasis Express Cargo and Logistics Pvt Ltd · Bengaluru, India</div>
+        <ul class="tl-bullets">
+          <li>Prepared balance sheets, P&amp;L statements and financial reports for management decisions.</li>
+          <li>Coordinated vendor payments, improving payment cycle efficiency <b>20%</b> and cutting disputes <b>15%</b>.</li>
+          <li>Reconciled financial records and supported budgeting &amp; expense tracking.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<section class="pad" id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="section-tag">Selected Projects</span>
+        <h2 class="section-title">Campaigns that moved revenue</h2>
+      </div>
+      <p class="section-note">Three engagements where campaign strategy, landing pages, and tracking translated directly into topline growth.</p>
+    </div>
+
+    <div class="project-grid">
+      <div class="project-card reveal">
+        <div class="project-client">Merck</div>
+        <div class="project-title">Digital Marketing &amp; Revenue Growth Campaign</div>
+        <div class="project-metric">
+          <span class="from mono">₹18 Cr</span>
+          <span class="to mono">→ ₹20 Cr</span>
+          <span class="project-pct">+11% YoY</span>
+        </div>
+        <p class="project-desc">Executed multi-channel campaigns and optimised lead-gen strategy through targeted landing pages and performance analytics.</p>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-client">Joyalukkas</div>
+        <div class="project-title">B2B Lead Generation &amp; Marketing Optimisation</div>
+        <div class="project-metric">
+          <span class="from mono">₹5 Cr</span>
+          <span class="to mono">→ ₹6 Cr</span>
+          <span class="project-pct">+20%</span>
+        </div>
+        <p class="project-desc">Managed initiatives supporting revenue growth through audience targeting, creative optimisation and conversion tracking.</p>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-client">doTerra</div>
+        <div class="project-title">Performance Marketing &amp; Customer Acquisition</div>
+        <div class="project-metric">
+          <span class="to mono">₹600K+</span>
+          <span class="project-pct">Revenue generated</span>
+        </div>
+        <p class="project-desc">Executed acquisition campaigns leveraging UTM tracking, analytics and landing page optimisation to maximise ROI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider"></div></div>
+
+<section class="pad" id="certs">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="section-tag">Certifications &amp; Education</span>
+        <h2 class="section-title">Credentials</h2>
+      </div>
+      <p class="section-note">B.Com, Bengaluru City University — plus a Top Performer Award (2025) at Sysgrate Technologies.</p>
+    </div>
+
+    <div class="cert-row reveal">
+      <div class="cert-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 8.5L21 9.3L16.2 13.8L17.5 20.3L12 17L6.5 20.3L7.8 13.8L3 9.3L9.5 8.5L12 2Z" stroke="#2454FF" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        Google Ads Campaign Measurement
+      </div>
+      <div class="cert-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 8.5L21 9.3L16.2 13.8L17.5 20.3L12 17L6.5 20.3L7.8 13.8L3 9.3L9.5 8.5L12 2Z" stroke="#2454FF" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        Google Analytics 4
+      </div>
+      <div class="cert-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 8.5L21 9.3L16.2 13.8L17.5 20.3L12 17L6.5 20.3L7.8 13.8L3 9.3L9.5 8.5L12 2Z" stroke="#2454FF" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        Google Tag Manager Fundamentals
+      </div>
+      <div class="cert-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 8.5L21 9.3L16.2 13.8L17.5 20.3L12 17L6.5 20.3L7.8 13.8L3 9.3L9.5 8.5L12 2Z" stroke="#2454FF" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        SEO Fundamentals
+      </div>
+      <div class="cert-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 8.5L21 9.3L16.2 13.8L17.5 20.3L12 17L6.5 20.3L7.8 13.8L3 9.3L9.5 8.5L12 2Z" stroke="#2454FF" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        LinkedIn Marketing Strategy
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <svg class="footer-graph" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="0,260 60,240 110,255 170,190 220,205 280,140 330,160 390,80 440,95 500,30"
+      stroke="#7DA2FF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="wrap footer-inner">
+    <h2>Let's build the next <span>growth line</span> together.</h2>
+    <p class="footer-sub">Open to B2B digital marketing and marketing operations roles across India, APAC and the Gulf. Reach out — I'll bring the campaign playbook.</p>
+    <div class="footer-actions">
+      <a class="btn btn-light" href="mailto:menezesenosh@gmail.com">Email menezesenosh@gmail.com</a>
+      <a class="btn btn-outline-light" href="https://linkedin.com/in/enoshgodwin" target="_blank" rel="noopener">Connect on LinkedIn</a>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <div class="contact-label">Location</div>
+        <div class="contact-val">Bengaluru, India</div>
+      </div>
+      <div>
+        <div class="contact-label">Phone</div>
+        <div class="contact-val"><a href="tel:+917848980078">+91 78489 80078</a></div>
+      </div>
+      <div>
+        <div class="contact-label">Email</div>
+        <div class="contact-val"><a href="mailto:menezesenosh@gmail.com">menezesenosh@gmail.com</a></div>
+      </div>
+      <div>
+        <div class="contact-label">Languages</div>
+        <div class="contact-val">English · Hindi · Konkani</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
